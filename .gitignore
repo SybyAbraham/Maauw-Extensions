@@ -8,3 +8,7 @@ MaauwE.vcxproj.filters
 MaauwE.vcxproj
 
 MaauwE.sln
+
+.vs/
+
+Debug/
