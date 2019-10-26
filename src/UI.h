@@ -8,8 +8,8 @@ Copyright (c) 2019 Syby Abraham.
 
 #include "Arduino.h"
 #include "U8g2lib.h"
-#include "C:\Users\sybya\Documents\Arduino\maauw_extensions\MaauwE\src\OrtonCones.h"
-#include "C:\Users\sybya\Documents\Arduino\maauw_extensions\MaauwE\src\Core.h"
+#include "..\src\OrtonCones.h"
+#include "..\src\Core.h"
 
 #define cone_width 29
 #define cone_height 38

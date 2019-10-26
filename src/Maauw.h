@@ -12,8 +12,8 @@
 
 #include "Button.h"
 #include <Timer.h>
-#include "C:\Users\sybya\Documents\Arduino\maauw_extensions\Maauw-Extensions\src\Core.h"
-#include "C:\Users\sybya\Documents\Arduino\maauw_extensions\Maauw-Extensions\src\UI.h"
+#include "..\src\Core.h"
+#include "..\src\UI.h"
 
 extern Button button;
 extern Timer t;

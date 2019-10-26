@@ -10,7 +10,7 @@ Copyright (c) 2019 Syby Abraham.
 #include "Arduino.h"
 #include "SPI.h"
 #include <SD.h>
-#include "C:\Users\sybya\Documents\Arduino\maauw_extensions\MaauwE\src\MAX31855_STM32.h"
+#include "..\src\MAX31855_STM32.h"
 
 extern MAX31855_STM32 thermocouple;
 extern Sd2Card card;
