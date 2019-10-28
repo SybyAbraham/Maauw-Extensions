@@ -12,8 +12,8 @@ Copyright (c) 2019, Syby Abraham, All rights reserved.
 **Features**
 
  - Cone Display
- - Heating/Cooling Indicator
- - Fire Animation
+ - Heating/Cooling Indicator & Animation
+ - Cooldown Estimation
  - Data Logging to SD Card [In-Progress]
 
 
