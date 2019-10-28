@@ -42,7 +42,7 @@ void Maauw::run() {
 	}
 
 	if (button.onDoubleClick()) {
-		//core.sdCardInfo();
+		core.sdCardInfo();
 	}
 
 }
