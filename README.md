@@ -1,6 +1,6 @@
 **Maauw Extensions // Pre-Alpha**
 -----------------
-**Ceramic Kiln Temperature Monitoring and Logging Firmware for STM32F103C8**
+**Ceramic Kiln Temperature Monitoring and Logging Firmware for Maauw Extensions**
 
 
 Copyright (c) 2019, Syby Abraham, All rights reserved.
