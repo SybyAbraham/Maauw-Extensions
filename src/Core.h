@@ -34,6 +34,7 @@ public:
 	int tempChange();
 
 	int tempRate();
+	bool getCardState();
 
 private:
 	int _state;

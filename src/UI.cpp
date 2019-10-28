@@ -11,7 +11,7 @@ UI::UI(){
 	_displayState = 1;
 	_animFrame = 0;
 
-	_prevDR = digitalRead(PB7);
+	_prevDR = core.getCardState;
 }
 
 //Create Popup Window
@@ -47,8 +47,8 @@ void UI::sdPopupHandler(){
 	_callback = 0;
 }
 
-if (_prevDR != digitalRead(PB7)) {
-	_prevDR = digitalRead(PB7);
+if (_prevDR != core.getCardState){
+	_prevDR = core.getCardState;
 	_callback = 1;
 }
 

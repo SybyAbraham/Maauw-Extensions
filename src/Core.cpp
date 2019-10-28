@@ -73,8 +73,14 @@ void Core::powerOff() {
 	digitalWrite(PB5, LOW);
 }
 
+bool Core::getCardState() {
+	return digitalRead(PB7);
+}
 void Core::sdCardInfo() {
 
+	if (!getCardState){
+		//Print "Please insert SD to start logging"
+		}
 	
 	Serial.print("\nInitializing SD card...");
 
