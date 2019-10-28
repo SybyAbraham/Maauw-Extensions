@@ -41,6 +41,7 @@ bool callback = 0;
 Button button = Button(PB4, LOW);
 
 void setup(void) {
+	pinMode(PB8, INPUT_PULLDOWN); //Bridged pin correction
 	pinMode(PB7, INPUT_PULLUP);
 	pinMode(PB5, OUTPUT);
 	digitalWrite(PB5, HIGH);
@@ -57,7 +58,7 @@ void setup(void) {
 	u8g2.clearBuffer();
 	u8g2.begin();
 	button.listen();
-	u8g2.setBusClock(32000000);
+	u8g2.setBusClock(34000000);
 
 	for (loader; loader < 104; loader += 2) {
 		  maauw.loader(loader);
