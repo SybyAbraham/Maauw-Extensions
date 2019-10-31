@@ -11,7 +11,7 @@ UI::UI(){
 	_displayState = 1;
 	_animFrame = 0;
 
-	_prevDR = core.getCardState;
+	_prevDR = core.getCardState();
 }
 
 //Create Popup Window
@@ -19,12 +19,12 @@ void UI::createPopup(char msg[], int duration) {
 
 	switch (_state){
 
-	case 1:
+	case 0:
 		_time = millis(); //Capture Clock
-		_state = 2;
+		_state = 1;
 		break;
 
-	case 2:
+	case 1:
 		if (millis() - _time < duration) {  //Use captured time to see if time has passed
 			//Message Box
 			u8g2.setDrawColor(0);
@@ -32,30 +32,53 @@ void UI::createPopup(char msg[], int duration) {
 			u8g2.setDrawColor(1);
 			u8g2.drawFrame(14, 24, 100, 80);
 
-			//Message Text  
 			u8g2.setFont(u8g2_font_helvB08_tf);
 			u8g2.drawStr(center(msg), 64, msg);
-		}
+		} 
 		else {
-			_state = 1;
+			_state = 0;
 		}
 	}
 }
 
+bool UI::getPopupState() {
+	return _state;
+}
+
 void UI::sdPopupHandler(){
-	if (_state == 1) {
-	_callback = 0;
+	if (_state == 0) {
+	_statechange = 0;		//Set state change back to 0 after 1500ms signaling no state change
 }
 
-if (_prevDR != core.getCardState){
-	_prevDR = core.getCardState;
-	_callback = 1;
+if (_prevDR != core.getCardState()){	//If previous digitalRead() changed then create a popup
+	_prevDR = core.getCardState();		//showing state change
+	_statechange = 1;					//Signal state change
 }
 
-if (_callback == 1 && digitalRead(PB7) == 0) {
-	createPopup("SD Inserted", 1500);
-} else if (_callback == 1 && digitalRead(PB7) == 1) {
+if (_statechange == 1 && !core.getCardState()) {	//If state has changed and cardState() is low Note: cardState() is active-low
+	createPopup("SD Inserted", 1500);				//Create popup
+} else if (_statechange == 1 && core.getCardState()) {
 	createPopup("SD Ejected", 1500);
+	}
+}
+
+void UI::sdUI(uint8_t sdgui) {
+	_errState = sdgui; //State 1: Insert SD Popup. State 2: Initializing SD
+	Serial.println(_errState);
+}
+
+void UI::extHandler() {
+
+	switch (_errState) {
+	case 1:
+		createPopup("Insert SD", 1500);
+		break;
+	case 2:
+		createPopup("Initializing SD", 1500);
+		break;
+	}
+	if (getPopupState() == 0) {
+		_errState = 0;
 	}
 }
 
@@ -370,6 +393,9 @@ void UI::run(void) {
 		fireAnimation(9, 90);
 
 		sdPopupHandler();
+
+		extHandler();
+
 		///Send Created Buffer
 		u8g2.sendBuffer();
 	}

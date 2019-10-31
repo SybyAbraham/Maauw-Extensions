@@ -78,10 +78,6 @@ bool Core::getCardState() {
 }
 void Core::sdCardInfo() {
 
-	if (!getCardState){
-		//Print "Please insert SD to start logging"
-		}
-	
 	Serial.print("\nInitializing SD card...");
 
 	// we'll use the initialization code from the utility libraries

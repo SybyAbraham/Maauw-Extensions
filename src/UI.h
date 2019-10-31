@@ -56,20 +56,26 @@ public:
 	int setUnit(int unit);
 	int getUnit();
 
+	void sdUI(uint8_t sdgui);
+	void extHandler();
+
 	Core core;
 
 	static int ptest;
 
 private:
-	int _state;
+	bool _state;
 	int _animFrame; 
 	unsigned long _time; 
 	unsigned long _animClock;
 	bool _prevDR;
 	bool _unit;
-	int _callback;
+	int _statechange;
 	int charge = 0;
 	int _displayState = 2; 
+	uint8_t _errState;
+
+	bool getPopupState();
 	
 
 	static const unsigned char PROGMEM maauw_ext_bits[];

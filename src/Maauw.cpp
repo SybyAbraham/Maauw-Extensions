@@ -42,7 +42,12 @@ void Maauw::run() {
 	}
 
 	if (button.onDoubleClick()) {
-		core.sdCardInfo();
+		if (core.getCardState() == 1) {
+			//Print "Please insert SD to start logging"
+			ui.sdUI(1);
+		} else if (core.getCardState() == 0){
+			ui.sdUI(2);
+			core.sdCardInfo();
+		}
 	}
-
 }
