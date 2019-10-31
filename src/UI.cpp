@@ -64,7 +64,6 @@ if (_statechange == 1 && !core.getCardState()) {	//If state has changed and card
 
 void UI::sdUI(uint8_t sdgui) {
 	_errState = sdgui; //State 1: Insert SD Popup. State 2: Initializing SD
-	Serial.println(_errState);
 }
 
 void UI::extHandler() {
